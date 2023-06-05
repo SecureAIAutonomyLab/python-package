@@ -1,4 +1,4 @@
-name: env_example
+name: my_env
 channels:
   - pytorch-nightly
   - huggingface
@@ -172,4 +172,4 @@ dependencies:
   - zstd=1.5.5=hc292b87_0
   - pip:
       - mpmath==1.2.1
-prefix: /home/brandon/miniconda3/envs/env_example
+prefix: /home/brandon/miniconda3/envs/my_env
