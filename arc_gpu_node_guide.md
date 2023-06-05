@@ -42,6 +42,21 @@ pip install <other_stuff> # if you have any modules that are not on conda (usual
 conda env export > environment.yml
 
 ```
+# Installing miniconda on /home/abc123
+```bash
+# The miniconda install will persist in your home directory, you need only do this once
+mkdir -p ~/miniconda3 && \
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh && \
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3 && \
+rm -rf ~/miniconda3/miniconda.sh
+
+# Need to run these everytime you set up a new environment
+# Important to avoid exceeding disk quota
+~/miniconda3/bin/conda init bash && \
+exec bash && \
+export CONDA_PKGS_DIRS=/work/abc123/.conda/pkgs && \
+mkdir -p /work/abc123/.conda/pkgs
+```
 
 # Creating existing conda environment from `environment.yml` file
 Use this section if you already have a conda `environment.yml` file that specifys all your dependencies
