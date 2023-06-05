@@ -8,7 +8,7 @@ module load anaconda3
 # but your data MUST go to /work/abc123
 cd /work/abc123
 
-git clone https://github.com/SecureAIAutonomyLab/LLM-Utils.git
+git clone https://github.com/SecureAIAutonomyLab/python-package.git
 cd LLM-Utils # you will now be ready to set up a conda environment
 ```
 
