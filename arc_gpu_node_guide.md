@@ -27,7 +27,7 @@ conda install -c conda-forge datasets
 # install any other dependies with conda, if they don't exist, you can use pip install instead
 # limit the use of pip install unelss it is necessary. If you have a requirements.txt you can do the following
 
-pip install -r requirements.txt # if you have a requirements.txt
+pip install <other_stuff> # if you have any modules that are not on conda (usually wont happen)
 ```
 
 # Creating existing conda environment from `environment.yml` file
