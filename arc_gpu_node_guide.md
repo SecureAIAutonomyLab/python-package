@@ -1,3 +1,13 @@
+# Video Guide Overview
+
+1. Create a conda environment for your repo
+2. Export your env to a `environment.yml`
+3. Log in to arc & grab GPU node.
+4. Download your code from github
+5. Create environment from `environment.yml`
+6. Run code.
+7. A note on using branching in git
+
 # Logging into arc and starting an interactive session with a single v100 GPU node
 ```bash
 ssh abc123@arc.utsa.edu
@@ -40,4 +50,6 @@ conda activate ./env
 
 ```
 
-## Now your environment is set up, and you are ready to run your code
+Now your environment is set up, and you are ready to run your code.
+
+
