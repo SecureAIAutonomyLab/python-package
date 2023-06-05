@@ -66,5 +66,6 @@ def main():
 
     print(f'Peak memory usage after evaluation: {torch.cuda.max_memory_allocated() / 1e9:.4f} GB')
 
+
 if __name__ == "__main__":
     main()
