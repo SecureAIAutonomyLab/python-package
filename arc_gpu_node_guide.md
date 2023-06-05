@@ -24,7 +24,7 @@ cd LLM-Utils # you will now be ready to set up a conda environment
 
 # Creating new conda environment, and then installing what you need manually
 ```bash
-conda create -p env python=3.10
+conda create -n my_env python=3.10
 
 conda activate ./env
 
