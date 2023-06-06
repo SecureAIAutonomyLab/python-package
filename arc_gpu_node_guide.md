@@ -84,3 +84,19 @@ Now your environment is set up, and you are ready to run your code.
 
 # Arc Documentation
 
+https://hpcsupport.utsa.edu/foswiki/bin/view/ARC/WebHome
+
+# Allowed GPUs
+
+| Name        | GPU Node Name |
+| ----------- | ----------- |
+| nafis_islam      | gpu4v100       |
+| dylan_manuel   | gpu2v100, gpu1v100	|
+| paul_young   | gpu2v100, gpu1v100		|
+| isaac_corley   | gpu4v100	|
+| mazal_bethany   | gpu2v100, gpu1v100	|
+| emet_bethany   | gpu2v100, gpu1v100		|
+| rinu_joseph   | gpu1v100	|
+| ana_nhunez   | gpu1v100	|
+| javier_quiros   | gpu1v100	|
+| abdalwahab_almajed   | Off	|
