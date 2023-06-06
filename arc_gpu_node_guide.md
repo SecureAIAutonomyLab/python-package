@@ -1,6 +1,6 @@
 # Arc Video Guide
 
-<iframe width="800" height="600" src="https://www.youtube.com/embed/PXJh-3_tDX0" title="ARC UTSA Guide" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+https://youtu.be/PXJh-3_tDX0
 
 1. Create a conda environment for your repo
 2. Export your env to a `environment.yml`
