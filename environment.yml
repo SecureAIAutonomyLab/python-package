@@ -172,4 +172,4 @@ dependencies:
   - zstd=1.5.5=hc292b87_0
   - pip:
       - mpmath==1.2.1
-prefix: /home/brandon/miniconda3/envs/my_env
+prefix: /home/brandon26/miniconda/envs/my_env
