@@ -12,7 +12,6 @@
 ```bash
 ssh abc123@arc.utsa.edu
 srun -p gpu1v100 -n 1 -t 01:30:00 -c 40 --pty bash
-module load anaconda3
 
 # make sure your code goes to /work/abc123 dir (it can also goto /home/abc123 if you want)
 # but your data MUST go to /work/abc123
