@@ -54,8 +54,8 @@ exec bash
 
 # Need to run these everytime you set up a new environment
 # Important to avoid exceeding disk quota
-export CONDA_PKGS_DIRS=/work/abc123/.conda/pkgs && \
-mkdir -p /work/abc123/.conda/pkgs
+export CONDA_PKGS_DIRS=/work/zwe996/.conda/pkgs && \
+mkdir -p /work/zwe996/.conda/pkgs
 ```
 
 # In general, if you run into a `disk quota exceed` error it just means you need to change an environment variable.
