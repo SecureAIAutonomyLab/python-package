@@ -58,6 +58,16 @@ export CONDA_PKGS_DIRS=/work/abc123/.conda/pkgs && \
 mkdir -p /work/abc123/.conda/pkgs
 ```
 
+# In general, if you run into a disk quota error it just means you need to change an environment variable.
+
+For example, anytime you download very large models or datasets, you will likely have to make a change to avoid too much data being temporarily stored into your home directory
+
+```bash
+export HF_HOME=/work/zwe996/.cache/huggingface && \
+mkdir -p /work/zwe996/.cache/huggingface
+```
+
+
 # Creating existing conda environment from `environment.yml` file
 Use this section if you already have a conda `environment.yml` file that specifys all your dependencies
 
