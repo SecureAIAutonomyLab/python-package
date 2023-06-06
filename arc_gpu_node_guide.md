@@ -19,7 +19,7 @@ module load anaconda3
 cd /work/abc123
 
 git clone https://github.com/SecureAIAutonomyLab/python-package.git
-cd LLM-Utils # you will now be ready to set up a conda environment
+cd python-package # you will now be ready to set up a conda environment
 ```
 
 # Creating new conda environment, and then installing what you need manually
@@ -48,19 +48,19 @@ conda env export > environment.yml
 mkdir -p ~/miniconda3 && \
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh && \
 bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3 && \
-rm -rf ~/miniconda3/miniconda.sh
+rm -rf ~/miniconda3/miniconda.sh && \
+~/miniconda3/bin/conda init bash && \
+exec bash
 
 # Need to run these everytime you set up a new environment
 # Important to avoid exceeding disk quota
-~/miniconda3/bin/conda init bash && \
-exec bash && \
 export CONDA_PKGS_DIRS=/work/abc123/.conda/pkgs && \
 mkdir -p /work/abc123/.conda/pkgs
 ```
 
-# In general, if you run into a disk quota error it just means you need to change an environment variable.
+# In general, if you run into a `disk quota exceed` error it just means you need to change an environment variable.
 
-For example, anytime you download very large models or datasets, you will likely have to make a change to avoid too much data being temporarily stored into your home directory
+For example, anytime you download very large models or datasets, you will likely have to make a change to avoid too much data being temporarily cached in your home directory
 
 ```bash
 export HF_HOME=/work/zwe996/.cache/huggingface && \
