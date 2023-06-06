@@ -1,4 +1,4 @@
-# Video Guide Overview
+# Arc GPU Node Video Guide Overview
 
 1. Create a conda environment for your repo
 2. Export your env to a `environment.yml`
