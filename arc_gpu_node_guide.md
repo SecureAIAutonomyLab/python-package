@@ -31,7 +31,7 @@ conda activate ./env
 
 # install pytorch, go here for other versions (https://pytorch.org/get-started/locally/)
 # The following are needed for this example.
-conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch-nightly -c nvidia
+conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
 conda install -c huggingface transformers
 conda install -c conda-forge datasets
 
