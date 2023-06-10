@@ -53,7 +53,7 @@ rm -rf ~/miniconda3/miniconda.sh && \
 ~/miniconda3/bin/conda init bash && \
 exec bash
 
-# Need to run these everytime you set up a new environment
+# Need to run this everytime you log in, unelss you add the export to your ~./bashrc
 # Important to avoid exceeding disk quota
 export CONDA_PKGS_DIRS=/work/zwe996/.conda/pkgs && \
 mkdir -p /work/zwe996/.conda/pkgs
@@ -64,6 +64,7 @@ mkdir -p /work/zwe996/.conda/pkgs
 For example, anytime you download very large models or datasets, you will likely have to make a change to avoid too much data being temporarily cached in your home directory
 
 ```bash
+# Need to run this everytime you log in, unelss you add the export to your ~./bashrc
 export HF_HOME=/work/zwe996/.cache/huggingface && \
 mkdir -p /work/zwe996/.cache/huggingface
 ```
