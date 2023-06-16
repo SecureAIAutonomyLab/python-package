@@ -84,7 +84,7 @@ Now your environment is set up, and you are ready to run your code.
 
 # Guide for Slurm Scripting
 
-For long-running jobs, you may want to consider using a slurm script. However, before using a slurm script, you should make sure to set up your computing environment in an interactive session (as shown above with `srun`) to make sure that your code will run (set up your conda environment moved your data to `/work/abc`, etc).
+For long-running jobs, you may want to consider using a slurm script. However, before using a slurm script, you should make sure to set up your computing environment in an interactive session (as shown above with `srun`) to make sure that your code will run (set up your conda environment, move your data to `/work/abc`, etc).
 
 Below is a sample script which covers the following steps:
 
