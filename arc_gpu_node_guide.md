@@ -81,6 +81,44 @@ conda activate ./env
 
 Now your environment is set up, and you are ready to run your code.
 
+# Guide for Slurm Scripting
 
-# Arc Documentation
+For long-running jobs, you may want to consider using a slurm script.
+
+Below is a sample script which covers the following steps:
+
+1. Requests resources from Slurm
+2. Activates a conda environment
+3. Executes Python code
+
+Example `job_script.slurm`
+```bash
+#!/bin/bash
+#SBATCH --job-name=python_job       # Create a short name for your job, required
+#SBATCH --nodes=1                   # Number of nodes, required
+#SBATCH --ntasks=40                 # Number of CPU cores to use, required
+#SBATCH --time=01:00:00             # Time limit hrs:min:sec, required
+#SBATCH --output myjob.o%j          # Name of the stdout output file, required
+#SBATCH --error myjob.e%j           # Name of stderr error file 
+#SBATCH --partition=gpu1v100        # Specify the name of the GPU partition, required
+
+# you probably want to use source to activate your conda environment, as conda install
+# may not be available to the shell environment
+source /work/abc123/my_env/bin/activate  # Activate your conda environment
+export HF_HOME=/work/abc123/.cache/huggingface # You may not need to do these exports
+export CONDA_PKGS_DIRS=/work/abc123/.conda/pkgs # Only if you're having disk quota exceeded errors
+
+python /work/abc123/python-package/script.py      # Execute your Python script
+```
+run the script by doing:
+
+`[abc123@login003 ~]$ sbatch job_script.slurm`
+
+Once you've started the job, see more documentation here to view its progress.
+
+https://hpcsupport.utsa.edu/foswiki/pub/ARC/WebHome/Running_Jobs_On_Arc.pdf
+
+# Arc Documentation Link
+
+https://hpcsupport.utsa.edu/foswiki/bin/view/ARC/WebHome
 

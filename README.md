@@ -24,10 +24,20 @@ python -m your_packagea arg1 arg2
 
 ## Installing Your Code as a Package
 To install your code as a package in another project, you may install with `pip`:
-```
+```bash
 pip install git+https://github.com/SecureAIAutonomyLab/your_package.git#egg=your_package
 ```
 (Replacing `your_package` with the name of your package.)
 
+OR
+
+```bash
+git clone https://github.com/SecureAIAutonomyLab/python-package.git
+cd python-package
+pip install .
+```
+(If you are using conda to manage your dependencies, you would first need to conda install them via the `environment.yml` file. But if all of your dependecies are specified in your `pyproject.toml`, then you can install directly from github)
+
+
 ## Adding Dependencies
-As you are adding additional packages to your project (e.g. `torch`,) please be sure to add them in `requirements.txt` and the `dependencies` section of `pyproject.toml`.
+As you are adding additional packages to your project (e.g. `torch`,) please be sure to add them in `environment.yml` and the `dependencies` section of `pyproject.toml`. (Although, since we are mostly going to be using conda for managing our dependencies, you really only need to add them to the `environment.yml` file)
