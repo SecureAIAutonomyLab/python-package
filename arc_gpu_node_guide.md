@@ -31,7 +31,7 @@ conda activate ./env
 
 # install pytorch, go here for other versions (https://pytorch.org/get-started/locally/)
 # The following are needed for this example.
-conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch-nightly -c nvidia
+conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
 conda install -c huggingface transformers
 conda install -c conda-forge datasets
 
@@ -53,7 +53,7 @@ rm -rf ~/miniconda3/miniconda.sh && \
 ~/miniconda3/bin/conda init bash && \
 exec bash
 
-# Need to run these everytime you set up a new environment
+# Need to run this everytime you log in, unelss you add the export to your ~/.bashrc
 # Important to avoid exceeding disk quota
 export CONDA_PKGS_DIRS=/work/zwe996/.conda/pkgs && \
 mkdir -p /work/zwe996/.conda/pkgs
@@ -64,6 +64,7 @@ mkdir -p /work/zwe996/.conda/pkgs
 For example, anytime you download very large models or datasets, you will likely have to make a change to avoid too much data being temporarily cached in your home directory
 
 ```bash
+# Need to run this everytime you log in, unelss you add the export to your ~/.bashrc
 export HF_HOME=/work/zwe996/.cache/huggingface && \
 mkdir -p /work/zwe996/.cache/huggingface
 ```
@@ -122,3 +123,19 @@ https://hpcsupport.utsa.edu/foswiki/pub/ARC/WebHome/Running_Jobs_On_Arc.pdf
 
 https://hpcsupport.utsa.edu/foswiki/bin/view/ARC/WebHome
 
+https://hpcsupport.utsa.edu/foswiki/bin/view/ARC/WebHome
+
+# Allowed GPUs
+
+| Name        | GPU Node Name |
+| ----------- | ----------- |
+| nafis_islam      | gpu4v100       |
+| dylan_manuel   | gpu2v100, gpu1v100	|
+| paul_young   | gpu2v100, gpu1v100		|
+| isaac_corley   | gpu4v100	|
+| mazal_bethany   | gpu2v100, gpu1v100	|
+| emet_bethany   | gpu2v100, gpu1v100		|
+| rinu_joseph   | gpu1v100	|
+| ana_nhunez   | gpu1v100	|
+| javier_quiros   | gpu1v100	|
+| abdalwahab_almajed   | Off	|
