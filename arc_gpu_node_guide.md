@@ -123,8 +123,6 @@ https://hpcsupport.utsa.edu/foswiki/pub/ARC/WebHome/Running_Jobs_On_Arc.pdf
 
 https://hpcsupport.utsa.edu/foswiki/bin/view/ARC/WebHome
 
-https://hpcsupport.utsa.edu/foswiki/bin/view/ARC/WebHome
-
 # Allowed GPUs
 
 | Name        | GPU Node Name |
