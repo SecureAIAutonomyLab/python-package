@@ -84,7 +84,7 @@ Now your environment is set up, and you are ready to run your code.
 
 # Guide for Slurm Scripting
 
-For long-running jobs, you may want to consider using a slurm script.
+For long-running jobs, you may want to consider using a slurm script. However, before using a slurm script, you should make sure to set up your computing environment in an interactive session (as shown above with `srun`) to make sure that your code will run (set up your conda environment moved your data to `/work/abc`, etc).
 
 Below is a sample script which covers the following steps:
 
@@ -103,9 +103,8 @@ Example `job_script.slurm`
 #SBATCH --error myjob.e%j           # Name of stderr error file 
 #SBATCH --partition=gpu1v100        # Specify the name of the GPU partition, required
 
-# you probably want to use source to activate your conda environment, as conda install
-# may not be available to the shell environment
-source /work/abc123/my_env/bin/activate  # Activate your conda environment
+eval "$(conda shell.bash hook)"
+conda activate /work/abc123/my_env/  # Activate your conda environment from dir
 export HF_HOME=/work/abc123/.cache/huggingface # You may not need to do these exports
 export CONDA_PKGS_DIRS=/work/abc123/.conda/pkgs # Only if you're having disk quota exceeded errors
 
