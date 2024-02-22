@@ -39,7 +39,7 @@ pip install -r requirements.txt
 # OR
 
 conda env export > environment.yml
-
+```
 ```
 # Need to run this everytime you log in, unelss you add the export to your ~/.bashrc
 # Important to avoid exceeding disk quota
@@ -47,7 +47,6 @@ export CONDA_PKGS_DIRS=/work/zwe996/.conda/pkgs && \
 mkdir -p /work/zwe996/.conda/pkgs
 ```
 # In general, if you run into a `disk quota exceed` error it just means you need to change an environment variable.
-
 For example, anytime you download very large models or datasets, you will likely have to make a change to avoid too much data being temporarily cached in your home directory
 
 ```bash
