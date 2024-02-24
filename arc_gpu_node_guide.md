@@ -1,12 +1,11 @@
 # Arc Video Guide
-
 https://youtu.be/PXJh-3_tDX0
 
-1. Log in to arc & grab GPU node
-2. Create a conda environment for your repo
-3. Download your code from github
-4. Create environment from `environment.yml`
-5. Run code.
+# Disclaimer
+The information provided in the video might be outdated. For instance, to access Conda, one can simply use the command `module load anaconda3`. Additionally, it might be necessary to run `conda init` and/or `exec bash` to activate the base Conda environment.
+
+Moreover, the video demonstrates only one method for executing code on the ARC system. Personally, I prefer to develop locally on my system and maintain an ARC session within a terminal in Visual Studio Code. I use Git to synchronize code changes from my local environment to ARC. While it's possible to access ARC in a more direct fashion via remote VS Code, I choose not to do so to avoid over-allocating resources in ARC, as this is typically what you find in the Industry (AWS has multi-gpu instances that are 40 bucks an hour, you can find resources cheaper than that, but all of them are pretty pricey). By interacting with ARC solely through a terminal, I can efficiently manage resource usage and continue debugging and testing without unnecessarily occupying ARC resources. However, if the issues you face are solely related to loading in a bigger model, then some debugging/testing on ARC is unavoidable. But when you understand the ARC environment and get used to it, you'll just be submitting Slurm/batch jobs in anyway, and there will be no interactive sessions in ARC that are needed.
+
 
 # Logging into arc and starting an interactive session with a single v100 GPU node
 ```bash
@@ -21,12 +20,27 @@ git clone https://github.com/SecureAIAutonomyLab/python-package.git
 cd python-package # you will now be ready to set up a conda environment
 ```
 
+# A common connection issue with ARC
+```bash
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+
+Host key verification failed.
+```
+If you encounter a "Host key verification failed" error when connecting via SSH, indicating the remote host identification has changed, you need to update your known_hosts file. First, open this file located at C:\Users\your_username\.ssh\known_hosts with a text editor like Notepad. Locate and delete the line that mentions the server you're trying to connect to, often specified by line number in the error message. This step removes the outdated server key. Upon your next SSH connection attempt, you'll be prompted to accept the new host key, thereby updating your known_hosts file and resolving the issue. This error typically occurs due to legitimate server changes or reconfigurations.
+
+
 # Creating new conda environment, and then installing what you need manually
 ```bash
 module load anaconda3
-conda create -n my_env python=3.11
 
-conda activate ./env
+# You may need to do exec bash after loading the module to see the base conda environment prefix
+# I'm not sure because I use a different approach, and install miniconda more directly, which involes more steps
+
+conda create -n my_env python=3.11
+conda activate my_env
 
 # install pytorch, go here for other versions (https://pytorch.org/get-started/locally/)
 # ARC GPU Nodes have Nvidia/CUDA Toolkit Version = 12.0, which means we need to compile pytorch with CUDA 11.8
@@ -34,7 +48,7 @@ conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvi
 conda install -c huggingface transformers
 conda install -c conda-forge datasets
 
-pip install -r requirements.txt
+pip install -r requirements.txt # If you have a requirements.txt going
 ```
 ```
 # Need to run this everytime you log in, unelss you add the export to your ~/.bashrc
@@ -43,8 +57,8 @@ export CONDA_PKGS_DIRS=/work/zwe996/.conda/pkgs && \
 mkdir -p /work/zwe996/.conda/pkgs
 ```
 # In general, if you run into a `disk quota exceed` error it just means you need to change an environment variable.
-For example, anytime you download very large models or datasets, you will likely have to make a change to avoid too much data being temporarily cached in your home directory
-
+For example, anytime you download very large models or datasets, you will likely have to make a change to avoid too much data being temporarily cached in your home directory.
+You need to delete the old HF cache in your home directly, and update the environment variable that points to that directory.
 ```bash
 # Need to run this everytime you log in, unelss you add the export to your ~/.bashrc
 export HF_HOME=/work/zwe996/.cache/huggingface && \
@@ -62,8 +76,9 @@ conda activate ./env
 Now your environment is set up, and you are ready to run your code.
 
 # Guide for Slurm Scripting
+This portion of the guide is only for those wanting to go above and beyond on ARC. It shows the basics of submitting batch jobs on Slurm. All HPC environments that manage many distributed resources will have something like this in place. The basic idea is that users submit jobs, and those jobs are queued, and when resources are available and they are next in line, the job runs, and the results are saved.
 
-For long-running jobs, you may want to consider using a slurm script. However, before using a slurm script, you should make sure to set up your computing environment in an interactive session (as shown above with `srun`) to make sure that your code will run (set up your conda environment, move your data to `/work/abc`, etc).
+For long-running jobs in particular, you may want to consider using a slurm script. However, before using a slurm script, you should make sure to set up your computing environment in an interactive session (as shown above with `srun`) to make sure that your code will run (set up your conda environment, move your data to `/work/abc`, etc).
 
 Below is a sample script which covers the following steps:
 
@@ -71,7 +86,8 @@ Below is a sample script which covers the following steps:
 2. Activates a conda environment
 3. Executes Python code
 
-Example `job_script.slurm`
+Example `job_script.slurm`  
+Note: this may not work for you as your setup is likely different. For example, you'll likely have to do a `module load anaconda3` and then activate your conda environment. You'll need to check the documentation found at the bottom of this guide.
 ```bash
 #!/bin/bash
 #SBATCH --job-name=python_job       # Create a short name for your job, required
