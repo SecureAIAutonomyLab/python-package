@@ -1,8 +1,8 @@
-# Arc Video Guide
+# ARC Video Guide
 https://youtu.be/PXJh-3_tDX0
 
 # Disclaimer
-The information provided in the video might be outdated. For instance, to access Conda, one can simply use the command `module load anaconda3`. Additionally, it might be necessary to run `conda init` and/or `exec bash` to activate the base Conda environment.
+The information provided in the video is outdated, and wasn't aimed at just teaching ARC (it was more centered around a development environment for ARC). If you understand conda, and have a working development  environment already, then you don't need to watch the video. Just follow this guide
 
 Moreover, the video demonstrates only one method for executing code on the ARC system. Personally, I prefer to develop locally on my system and maintain an ARC session within a terminal in Visual Studio Code. I use Git to synchronize code changes from my local environment to ARC. While it's possible to access ARC in a more direct fashion via remote VS Code, I choose not to do so to avoid over-allocating resources in ARC, as this is typically what you find in the Industry (AWS has multi-gpu instances that are 40 bucks an hour, you can find resources cheaper than that, but all of them are pretty pricey). By interacting with ARC solely through a terminal, I can efficiently manage resource usage and continue debugging and testing without unnecessarily occupying ARC resources. However, if the issues you face are solely related to loading in a bigger model, then some debugging/testing on ARC is unavoidable. But when you understand the ARC environment and get used to it, you'll just be submitting Slurm/batch jobs in anyway, and there will be no interactive sessions in ARC that are needed.
 
